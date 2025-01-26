@@ -1,0 +1,20 @@
+database:
+  host: 127.0.0.1
+  port: 5432
+  name: library
+  username: postgres
+  password: root
+
+spring:
+  application:
+    name: elotech-library
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
+  datasource:
+    url: jdbc:postgresql://${database.host}:${database.port}/${database.name}
+    username: ${database.username}
+    password: ${database.password}

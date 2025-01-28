@@ -2,7 +2,7 @@
 
 ## Como rodar a aplicação
 
-1. Execute o comando `docker-compose up -d --build`
+1. Execute o comando `docker compose up -d --build` na raiz do projeto
 
 2. Acesse o Swagger em [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
 

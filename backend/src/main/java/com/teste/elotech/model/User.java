@@ -1,6 +1,6 @@
 package com.teste.elotech.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -41,7 +41,7 @@ public class User {
     @Column(name = "data_cadastro", nullable = false)
     private LocalDate registeredAt;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-    @JsonManagedReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Loan> loans;
 }

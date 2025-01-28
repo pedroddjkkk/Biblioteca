@@ -1,6 +1,6 @@
 package com.teste.elotech.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -47,7 +47,7 @@ public class Book {
     @Column(name = "categoria", nullable = false)
     private String category;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "book")
-    @JsonManagedReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "book", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Loan> loans;
 }

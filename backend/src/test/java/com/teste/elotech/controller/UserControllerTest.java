@@ -40,7 +40,7 @@ class UserControllerTest {
 
     @Test
     void testCreateUserInvalidEmail() throws Exception {
-        mockMvc.perform(post("/user")
+        mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(createUserDTO)))
                 .andExpect(status().isBadRequest())

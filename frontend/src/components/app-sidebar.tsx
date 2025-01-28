@@ -10,21 +10,22 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 const items = [
   {
     title: "Users",
-    url: "#",
+    url: "/",
     icon: User,
   },
   {
     title: "Books",
-    url: "#",
+    url: "/books",
     icon: Book,
   },
   {
     title: "Loans",
-    url: "#",
+    url: "/loans",
     icon: DollarSign,
   },
 ];
@@ -40,10 +41,10 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

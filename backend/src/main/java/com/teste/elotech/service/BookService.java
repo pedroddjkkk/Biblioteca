@@ -46,6 +46,12 @@ public class BookService {
     }
 
     public List<Book> findAllByRecommendation(List<Loan> userLoans) {
-        return bookRepository.findAllByCategoryNotIn(userLoans.stream().map(Loan::getBook).map(Book::getCategory).toList());
+        List<String> categories = userLoans.stream().map(Loan::getBook).map(Book::getCategory).toList();
+
+        if (categories.isEmpty()) {
+            return bookRepository.findAll();
+        } else {
+            return bookRepository.findAllByCategoryNotIn(categories);
+        }
     }
 }

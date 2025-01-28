@@ -4,6 +4,7 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  Row,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -15,15 +16,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { cn } from "@/lib/utils";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  onRowClick?: (row: Row<TData>) => void;
+  noDataText?: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  onRowClick,
+  noDataText,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -58,6 +64,8 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                onClick={() => onRowClick && onRowClick(row)}
+                className={cn(Boolean(onRowClick) && "hover:cursor-pointer")}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
@@ -69,7 +77,7 @@ export function DataTable<TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
+                {noDataText ? noDataText : "No results."}
               </TableCell>
             </TableRow>
           )}

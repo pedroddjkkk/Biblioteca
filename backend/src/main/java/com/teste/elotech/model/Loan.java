@@ -1,6 +1,6 @@
 package com.teste.elotech.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.teste.elotech.enums.LoanStatusEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -32,13 +32,13 @@ public class Loan {
     @Column(name = "status", nullable = false)
     private LoanStatusEnum status;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "usuario_id")
-    @JsonBackReference
+    @JsonManagedReference
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "livro_id")
-    @JsonBackReference
+    @JsonManagedReference
     private Book book;
 }

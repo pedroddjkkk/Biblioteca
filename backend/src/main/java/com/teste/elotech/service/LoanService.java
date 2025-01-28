@@ -50,6 +50,10 @@ public class LoanService {
         }
     }
 
+    public List<Loan> findAll() {
+        return loanRepository.findAll();
+    }
+
     public List<Loan> findAllByUserId(Long userId) {
         return loanRepository.findAllByUser_Id(userId);
     }

@@ -1,9 +1,9 @@
 database:
-  host: 127.0.0.1
-  port: 5432
-  name: library
-  username: postgres
-  password: root
+  host: ${DATABASE_HOST:127.0.0.1}
+  port: ${DATABASE_PORT:5432}
+  name: ${DATABASE_NAME:library}
+  username: ${DATABASE_USERNAME:postgres}
+  password: ${DATABASE_PASSWORD:root}
 
 spring:
   application:
